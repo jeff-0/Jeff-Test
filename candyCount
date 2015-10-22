@@ -1,0 +1,17 @@
+function distributeCandy(score) {
+    var totalCandy = 1;
+    var pieces = 1;
+    for (x=0;x<score.length;x++){
+        if (score[x]>score[x-1]){
+            pieces += 1; 
+        }else if (score[x]>score[x+1]){
+            pieces = 1; 
+        }else{
+            pieces = 1;
+        }
+        totalCandy += pieces;  
+    }
+    
+process.stdout.write(totalCandy);
+    
+}
