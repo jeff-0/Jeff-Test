@@ -1,0 +1,44 @@
+process.stdin.resume();
+process.stdin.setEncoding("ascii");
+var input = "";
+process.stdin.on("data", function (chunk) {
+input += chunk;
+});
+process.stdin.on("end", function () {
+    //get input
+    var k = parseInt(input);
+    
+    //verify input and continue
+    if((k<2)||(k>25)){
+        process.stdout.write("Please enter an integer between 2 and 25");
+    }else{
+        var pascalTriangle = [1],
+        pascalRow;
+
+        //print first row
+        process.stdout.write("1 \n");
+        
+        for (var j = 0; j < k-1; j++) {
+            pascalRow = [1];
+            
+            //calculate next row
+            for (var m = 1; m < pascalTriangle[j].length; m++) {
+                pascalRow[m] = pascalTriangle[j][m] + pascalTriangle[j][m-1];
+            }
+            
+            //add element to row
+            pascalRow.push(1);
+            
+            //add row to triangle
+            pascalTriangle.push(pascalRow);
+            
+            //print next row
+            for (var s = 0; s < pascalRow.length; s++) {
+                process.stdout.write(pascalRow[s] + " ");
+            }
+            process.stdout.write("\n");
+        }
+
+    }
+    
+});
