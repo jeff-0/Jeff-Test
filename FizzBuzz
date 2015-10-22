@@ -1,0 +1,31 @@
+process.stdin.resume();
+process.stdin.setEncoding("ascii");
+var input = "";
+process.stdin.on("data", function (chunk) {
+input += chunk;
+});
+process.stdin.on("end", function () {
+    //get input
+    var n = parseInt(input);
+    //display input for testing
+    //process.stdout.write(n);
+    
+    if((n<0)||(n>10e7)){
+        process.stdout.write("Please enter a number between 0 and 10000000000000000");
+    }else{
+        for (x=1; x<n+1; x++){
+            if ((x % 3 == 0) && (x % 5 == 0)){
+               process.stdout.write("FizzBuzz\n"); 
+            }else if (x % 3 == 0){
+                process.stdout.write("Fizz\n");
+            }
+            else if (x % 5 == 0){
+                process.stdout.write("Buzz\n");
+            }
+            else{
+                process.stdout.write(x + "\n");
+            }
+        }
+    }
+    
+});
